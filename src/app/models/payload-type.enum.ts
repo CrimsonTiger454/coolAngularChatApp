@@ -1,0 +1,4 @@
+
+export enum PayloadTypeEnum {
+    Notification
+}
