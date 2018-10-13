@@ -1,4 +1,9 @@
 
 export enum PayloadTypeEnum {
-    Notification
+    Notification,
+    Location,
+    Filelock,
+    Message,
+    ConnectedUsers,
+    NewUser
 }
