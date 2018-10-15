@@ -11,7 +11,9 @@ export class ChatTabComponent implements OnInit {
 
   messages: MessagePayloadModel[];
 
-  constructor(private datCoolChatService: DatCoolChatClientService) {}
+  constructor(private datCoolChatService: DatCoolChatClientService) {
+  
+  }
 
   ngOnInit() {
     this.datCoolChatService.messageEventEmitter.subscribe(() => {

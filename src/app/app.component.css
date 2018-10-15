@@ -1,0 +1,22 @@
+.app-container {
+   margin: 0;
+}
+
+.left-column {
+    display: grid;
+    grid-template-columns: 130px 82vw;
+    grid-template-rows: 50vh 50vh;
+}
+
+app-global-connected-users {
+    border: 1px solid black;
+}
+
+app-file-list-component {
+    border: 1px solid black;
+}
+
+app-tabs {
+    height: 100vw;
+}
+

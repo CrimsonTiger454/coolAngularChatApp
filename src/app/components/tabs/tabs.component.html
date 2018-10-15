@@ -1,3 +1,28 @@
-<p>
-  tabs works!
-</p>
+<!-- 
+ <div class="tab">
+    <button class="tablinks" (click)="tabSelect($event, 'chat')">Chat</button>
+    <button class="tablinks" (click)="tabSelect($event, 'tab2')">Tab2</button>
+ </div>
+
+ <div class="tab-content" id='chat' style="display: none">
+   <app-chat-tab></app-chat-tab>
+ </div>
+
+ <div class="tab-content" id="tab2" style="display: none" >
+   <app-whos-here-tab></app-whos-here-tab>
+ </div> -->
+
+ <div class="tab">
+    <button class="tablinks" (click)="tabSelect(event, 'chat')">Chat</button>
+    <button class="tablinks" (click)="tabSelect(event, 'tab2')">Tab2</button>
+  </div>
+  
+  <div id="chat" class="tabcontent">
+    <app-chat-tab></app-chat-tab>
+  </div>
+  
+  <div id="tab2" class="tabcontent">
+    <app-whos-here-tab></app-whos-here-tab>
+  </div>
+  
+  
