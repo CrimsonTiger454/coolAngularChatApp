@@ -13,34 +13,15 @@ export class TabsComponent implements OnInit {
   ngOnInit() {
   }
 
-  // tabSelect(event, tabName) {
-  //   var i, tabcontent, tablinks;
-
-  //   tabcontent = document.getElementsByClassName("tabcontent");
-  //   for(i=0; i < tabcontent.length; i++) {
-  //     tabcontent[i].style.display = "none";
-  //   }
-
-  //   tablinks = document.getElementsByClassName("tablinks");
-  //   for (i = 0; i < tablinks.length; i++) {
-  //       tablinks[i].className = tablinks[i].className.replace(":active", "");
-  //   }
-
-  //   document.getElementById(tabName).style.display = "block";
-  //   event.currentTarget.className += ":active";
-  //   console.log(event.currentTarget)
-  //   console.log(`${tabName} clicked`)
-  // }
-
   tabSelect(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+        tabcontent[i].style.display = 'none';
     }
-    tablinks = document.getElementsByClassName("tablinks");
+    tablinks = document.getElementsByClassName('tablinks');
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(' active', '');
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";

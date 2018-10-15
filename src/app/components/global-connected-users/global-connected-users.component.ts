@@ -17,6 +17,6 @@ constructor(private datCoolChatService: DatCoolChatClientService) {}
 ngOnInit() {
   this.datCoolChatService.connectedUsersEventEmitter.subscribe(() => {
     console.log('track active users. Refresh is roomid is global');
-    })
+    });
   }
 }

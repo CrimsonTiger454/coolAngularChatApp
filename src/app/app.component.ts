@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private datCoolChatService: DatCoolChatClientService) {}
 
   ngOnInit() {
-    this.datCoolChatService.notifacationEventEmitter.subscribe(() => {
+    this.datCoolChatService.notificationEventEmitter.subscribe(() => {
       console.log('toast!');
     })
   }
