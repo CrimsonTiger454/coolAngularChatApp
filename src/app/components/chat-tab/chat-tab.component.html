@@ -1,1 +1,15 @@
-<h1>CHAT TAB BITCH</h1>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Chat</mat-card-title>
+  </mat-card-header>
+  <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
+    <p *ngFor="let message of messages">
+      <span *ngIf="message?.From?.Name">{{message.From.Name}}</span>
+      <span *ngIf="!message?.From?.Name">{{message.From.Id}}</span>
+      <span>: {{message.Message}}</span>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <input [(ngModel)]="message" (keyup.enter)="sendMessage()"> <button (click)="sendMessage()" mat-button>Send</button>
+  </mat-card-actions>
+</mat-card>

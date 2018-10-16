@@ -48,6 +48,14 @@ export class DatCoolChatClientService {
         console.log('emitting', PayloadTypeEnum.ConnectedUsers);
         this.connectedUsersEventEmitter.emit(<ConnectedUserPayloadModel>payload);
         break;
+      case PayloadTypeEnum.Filelock:
+        console.log('emitting', PayloadTypeEnum.Filelock);
+        this.fileLockEventEmitter.emit(<FileLockPayloadModel>payload);
+        break;
+      case PayloadTypeEnum.Message:
+        console.log('emitting', PayloadTypeEnum.Message);
+        this.messageEventEmitter.emit(<MessagePayloadModel>payload);
+        break;
       case PayloadTypeEnum.Me:
         this.userId = (<MePayloadModel>payload).Id;
         break;

@@ -3,5 +3,4 @@ import { UserModel } from './user-model.model';
 
 export interface MessagePayloadModel extends BasePayloadModel {
     Message: string;
-    From: UserModel;
 }

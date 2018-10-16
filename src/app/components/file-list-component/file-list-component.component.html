@@ -1,11 +1,8 @@
 <div class="files-container">
   <p class="file-header">Files</p>
   <ul class="file-list">
-    <li>file<input type="checkbox"/></li>
-    <li>file<input type="checkbox"/></li>
-    <li>file<input type="checkbox"/></li>
-    <li>file<input type="checkbox"/></li>
-    <li>file<input type="checkbox"/></li>
-    <li>file<input type="checkbox"/></li>
+    <li *ngFor="let file of files">
+      {{file.Name}}<input [(ngModel)]="file.IsLocked" type="checkbox" (change)="fileClicked($event, file)"/>
+    </li>
   </ul>
 </div>
