@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {ConnectedUserPayloadModel} from '../models/connected-users-payload.model';
 import {NotificationPayloadModel} from '../models/notification-payload.model';
 import {LocationPayloadModel} from '../models/location-payload.model';
@@ -7,6 +7,8 @@ import {MessagePayloadModel} from '../models/message-payload.model';
 import {NewUserModel} from '../models/new-user-payload.model';
 import {WebSocketSubject} from 'rxjs/webSocket';
 import {BasePayloadModel} from '../models/base-payload.model';
+import {PayloadTypeEnum} from '../models/payload-type.enum';
+import {MePayloadModel} from '../models/me-payload.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +22,39 @@ export class DatCoolChatClientService {
   messageEventEmitter = new EventEmitter<MessagePayloadModel>();
   newUserEventEmitter = new EventEmitter<NewUserModel>();
 
-  private socket: WebSocketSubject<BasePayloadModel>;
+  userId: string;
+
+  private readonly socket: WebSocketSubject<BasePayloadModel>;
 
   constructor() {
     this.socket = new WebSocketSubject<BasePayloadModel>('ws://localhost:50253/api/websocket');
+    console.log('socket', this.socket);
     this.socket.subscribe(
-      payload => {
-        console.log('payload is', payload);
+      (payload: BasePayloadModel) => {
+        console.log('payload in service', payload);
+        this.handlePayload(payload);
       }
     );
+  }
+
+  sendMessage(payload: BasePayloadModel) {
+    console.log('sending message', payload);
+    this.socket.next(payload);
+  }
+
+  private handlePayload(payload: BasePayloadModel) {
+    switch (<PayloadTypeEnum>payload.PayloadType) {
+      case PayloadTypeEnum.ConnectedUsers:
+        console.log('emitting', PayloadTypeEnum.ConnectedUsers);
+        this.connectedUsersEventEmitter.emit(<ConnectedUserPayloadModel>payload);
+        break;
+      case PayloadTypeEnum.Me:
+        this.userId = (<MePayloadModel>payload).Id;
+        break;
+      default:
+        console.log('default', PayloadTypeEnum);
+        console.log('PayloadType', payload.PayloadType);
+    }
   }
 
 }

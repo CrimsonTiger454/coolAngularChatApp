@@ -13,6 +13,8 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { FileListComponentComponent } from './components/file-list-component/file-list-component.component';
 import { WhosHereTabComponent } from './components/whos-here-tab/whos-here-tab.component';
 import { ChatTabComponent } from './components/chat-tab/chat-tab.component';
+import {MatCardModule, MatGridListModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import { ChatTabComponent } from './components/chat-tab/chat-tab.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MatTabsModule,
+    MatCardModule,
+    MatGridListModule,
     BrowserAnimationsModule
   ],
   providers: [DatCoolChatClientService],

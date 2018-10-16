@@ -15,7 +15,7 @@ export class FileListComponentComponent implements OnInit {
 
   ngOnInit() {
     this.datCoolChatService.fileLockEventEmitter.subscribe(() => {
-      console.log('if isLocked = true, lock file');
+      console.log('if IsLocked = true, lock file');
       })
     }
 

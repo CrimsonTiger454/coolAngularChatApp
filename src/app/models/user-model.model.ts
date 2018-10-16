@@ -1,7 +1,5 @@
-import { BasePayloadModel } from "./base-payload.model";
 
-
-export interface UserModel extends BasePayloadModel {
-    id: string;
-    name: string;
+export interface UserModel {
+    Id: string;
+    Name: string;
 }

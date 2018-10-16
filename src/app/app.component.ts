@@ -6,7 +6,7 @@ import { DatCoolChatClientService } from './services/dat-cool-chat-client.servic
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'coolNgChatApp';
 
   constructor(private datCoolChatService: DatCoolChatClientService) {}
@@ -14,6 +14,6 @@ export class AppComponent {
   ngOnInit() {
     this.datCoolChatService.notificationEventEmitter.subscribe(() => {
       console.log('toast!');
-    })
+    });
   }
 }

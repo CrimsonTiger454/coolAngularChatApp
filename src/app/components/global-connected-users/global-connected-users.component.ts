@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../models/user-model.model';
-import { DatCoolChatClientService } from '../../services/dat-cool-chat-client.service';
+import {Component, OnInit} from '@angular/core';
+import {UserModel} from '../../models/user-model.model';
+import {DatCoolChatClientService} from '../../services/dat-cool-chat-client.service';
+import {NewUserModel} from '../../models/new-user-payload.model';
+import {PayloadTypeEnum} from '../../models/payload-type.enum';
 
 @Component({
   selector: 'app-global-connected-users',
@@ -9,14 +11,29 @@ import { DatCoolChatClientService } from '../../services/dat-cool-chat-client.se
 })
 export class GlobalConnectedUsersComponent implements OnInit {
 
-users: UserModel[];
+  users: UserModel[];
+  userName: string;
 
-constructor(private datCoolChatService: DatCoolChatClientService) {}
+  constructor(public datCoolChatService: DatCoolChatClientService) {
+  }
 
 
-ngOnInit() {
-  this.datCoolChatService.connectedUsersEventEmitter.subscribe(() => {
-    console.log('track active users. Refresh is roomid is global');
+  ngOnInit() {
+    this.datCoolChatService.connectedUsersEventEmitter.subscribe((payload) => {
+      console.log('track active Users. Refresh is RoomId is global', payload);
+      this.users = payload.Users;
     });
+  }
+
+  setUserName() {
+    const payload = <NewUserModel>{
+      PayloadType: PayloadTypeEnum.NewUser,
+      User: <UserModel>{
+        Id: this.datCoolChatService.userId,
+        Name: this.userName
+      }
+    };
+    console.log('set user name payload', payload);
+    this.datCoolChatService.sendMessage(payload);
   }
 }

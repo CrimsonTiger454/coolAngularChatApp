@@ -1,10 +1,16 @@
+
 <div class="connectedusers-container">
   <p class="users-header">Users</p>
   <ul class="user-list">
-      <li>Robyn</li>
-      <li>Jacob</li>
-      <li>Megan</li>
-      <li>Joe</li>
-      <li>Gabby</li>
+      <li *ngFor="let user of users">
+        <div *ngIf="user.Name">{{user.Name}}</div>
+        <div *ngIf="!user.Name">{{user.Id}}</div>
+      </li>
     </ul>
 </div>
+<div>
+  <input [(ngModel)]="userName">
+  <button (click)="setUserName()" [disabled]="!datCoolChatService.userId">SetName</button>
+</div>
+
+<div>username: {{userName}}</div>
